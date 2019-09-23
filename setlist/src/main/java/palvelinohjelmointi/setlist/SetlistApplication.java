@@ -12,6 +12,8 @@ import palvelinohjelmointi.setlist.domain.Gig;
 import palvelinohjelmointi.setlist.domain.GigRepository;
 import palvelinohjelmointi.setlist.domain.Song;
 import palvelinohjelmointi.setlist.domain.SongRepository;
+import palvelinohjelmointi.setlist.domain.User;
+import palvelinohjelmointi.setlist.domain.UserRepository;
 
 @SpringBootApplication
 public class SetlistApplication {
@@ -21,7 +23,7 @@ public class SetlistApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(SongRepository songRepo, GigRepository gigRepo) { 
+	public CommandLineRunner demo(SongRepository songRepo, GigRepository gigRepo, UserRepository userRepo) { 
 		return (args) -> { 
 			
 			LocalDateTime dateTime1 = LocalDateTime.of(2019, Month.SEPTEMBER, 11, 16, 15, 15);
@@ -34,6 +36,12 @@ public class SetlistApplication {
 			
 			gigRepo.save(new Gig("Helsinki", "Esko's Birthday Party", dateTime1));
 			gigRepo.save(new Gig("Turku", "Selma's and Pete's Wedding", dateTime2));
+			
+			// Create users: admin/admin user/user
+			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			userRepo.save(user1);
+			userRepo.save(user2);
 		}; 
 	}
 }
