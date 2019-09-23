@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"/>
 <head>
     <title>Set list manager</title>
@@ -7,7 +7,11 @@
 </head>
 <body>
 	<h1>Keep your band repertoire, set lists and gigs in order!</h1>
-		<a th:href="@{/songlist}">Show repertoire</a>
-		<a th:href="@{/giglist}">Show gigs</a>
+	<h3>Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+	</form>
+	<a th:href="@{/songlist}" class="btn btn-primary">Show repertoire</a>
+	<a th:href="@{/giglist}" class="btn btn-primary">Show gigs</a>
 </body>
 </html>
