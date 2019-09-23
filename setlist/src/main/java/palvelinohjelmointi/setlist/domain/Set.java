@@ -27,7 +27,6 @@ public class Set {
 	private Gig gig;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="set")
-	@JoinColumn(name="id")
 	private List<Song> setList;
 
 	public Set(Gig gig) {

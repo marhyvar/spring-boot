@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"/>
+<head>
+    <title>Repertoire</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Band's repertoire</h1>
+		<table class="table table-hover">
+		<tbody>
+		<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Song Key</th>
+				<th>Original Performer</th>
+				<th>Total Length</th>
+			</tr>
+		</thead>
+		<tr th:each="song : ${songs}">
+			<td th:text="${song.name}"></td>
+			<td th:text="${song.key}"></td>
+			<td th:text="${song.originalPerformer}"></td>
+			<td th:text="${song.totalLength}"></td>
+			<td><a th:href="@{/deleteSong/{id}(id=${song.id})}">Delete</a></td>
+			<td><a th:href="@{/editSong/{id}(id=${song.id})}">Edit</a></td>
+		</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/addSong}">Add a new song to repertoire</a>
+		
+</body>
+</html>
