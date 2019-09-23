@@ -29,10 +29,6 @@ public class Gig {
             mappedBy = "gig")
 	private Set set;
 	
-	public Gig() {
-		
-	}
-	
 	public Gig(String location, String comment, LocalDateTime pvm) {
 		super();
 		this.location = location;
