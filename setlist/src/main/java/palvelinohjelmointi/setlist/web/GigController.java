@@ -3,6 +3,7 @@ package palvelinohjelmointi.setlist.web;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,6 +36,7 @@ public class GigController {
 	}
 	
 	//add a gig
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("addGig")
 	public String addGig(Model model) {
 		model.addAttribute("gig", new Gig());
@@ -42,6 +44,7 @@ public class GigController {
 	}
 	
 	//save a gig
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("saveGig")
 	public String saveGig(@Valid @ModelAttribute Gig gig, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -53,6 +56,7 @@ public class GigController {
 	}
 	
 	//edit a gig
+	@PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/editGig/{id}")
     public String updateGig(@PathVariable("id") Long id, Model model) {
     	Gig gig = gigRepo.findById(id).get();
@@ -62,6 +66,7 @@ public class GigController {
 }
 
 	//delete a gig
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/deleteGig/{id}", method = RequestMethod.GET)
     public String deleteGig(@PathVariable("id") Long id, Model model) {
     	System.out.println("gig "  + id);

@@ -3,6 +3,7 @@ package palvelinohjelmointi.setlist.web;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +40,7 @@ public class SongController {
 	}
 	
 	//add a song
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("addSong")
 	public String addSong(Model model) {
 		model.addAttribute("song", new Song());
@@ -46,6 +48,7 @@ public class SongController {
 	}
 	
 	//save a song
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("saveSong")
 	public String saveSong(@Valid @ModelAttribute Song song, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -56,6 +59,7 @@ public class SongController {
 	}
 	
 	//edit a song
+	@PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/editSong/{id}")
     public String updateSong(@PathVariable("id") Long id, Model model) {
     	Song song = songRepo.findById(id).get();
@@ -65,6 +69,7 @@ public class SongController {
 }
 
 	//delete a song
+	@PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/deleteSong/{id}", method = RequestMethod.GET)
     public String deleteSong(@PathVariable("id") Long id, Model model) {
     	System.out.println("song "  + id);
