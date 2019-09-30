@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"/>
+<head>
+    <title>Upcoming Gigs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Gigs</h1>
+		<table class="table table-hover">
+		<tbody>
+		<thead class="thead-dark">
+			<tr>
+				<th>Location</th>
+				<th>Comment</th>
+				<th>Date and time</th>
+				<th sec:authorize="hasAuthority('ADMIN')"> </th>
+				<th sec:authorize="hasAuthority('ADMIN')"> </th>
+			</tr>
+		</thead>
+		<tr th:each="gig : ${gigs}">
+			<td th:text="${gig.location}"></td>
+			<td th:text="${gig.comment}"></td>
+			<td th:text="${gig.pvm}"></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteGig/{id}(id=${gig.id})}">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editGig/{id}(id=${gig.id})}">Edit</a></td>
+		</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/addGig}">Add a new gig</a>
+	<a th:href="@{/index}" class="btn btn-primary">Back</a>
+		
+</body>
+</html>

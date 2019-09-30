@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"/>
+<head>
+<title>Edit a gig</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit a gig's information</h1>
+	<p>Change the gig's information.</p>
+	<div>
+		<form th:object="${gig}" th:action="@{../saveGig}" action="#" method="post">
+			<input type="hidden" id="id" th:field="*{id}"/>
+			<p><label for="location">Where?</label>
+			<input type ="text"id="location" th:field="*{location}" /> </p>
+			<p><label for="comment">What is it? </label>
+			<input type="text"id="comment" th:field="*{comment}" /> </p>
+			<p><label for="pvm">When? Date and time</label>
+			<input type ="text"id="pvm" th:field="*{pvm}" /></p>			
+			<p><input type ="submit" value="Add"></p>
+			
+		</form>
+	</div>
+	<a th:href="@{/index}" class="btn btn-primary">Back</a>
+</body>
+</html>
