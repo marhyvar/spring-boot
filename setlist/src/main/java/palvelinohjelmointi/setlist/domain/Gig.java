@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +23,13 @@ public class Gig {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String location, comment;
+	
+	@NotNull
+	private String location;
+	
+	private String comment;
+	
+	@NotNull
 	private LocalDateTime pvm;
 	
 	@OneToOne(fetch = FetchType.LAZY,
@@ -34,6 +42,14 @@ public class Gig {
 		this.location = location;
 		this.comment = comment;
 		this.pvm = pvm;
+	}
+
+	public Gig(String location, String comment, LocalDateTime pvm, Set set) {
+		super();
+		this.location = location;
+		this.comment = comment;
+		this.pvm = pvm;
+		this.set = set;
 	}
 	
 }

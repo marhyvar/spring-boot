@@ -11,16 +11,32 @@
 	<div>
 		<form th:object="${gig}" th:action="@{../saveGig}" action="#" method="post">
 			<input type="hidden" id="id" th:field="*{id}"/>
-			<p><label for="location">Where?</label>
-			<input type ="text"id="location" th:field="*{location}" /> </p>
-			<p><label for="comment">What is it? </label>
-			<input type="text"id="comment" th:field="*{comment}" /> </p>
-			<p><label for="pvm">When? Date and time</label>
-			<input type ="text"id="pvm" th:field="*{pvm}" /></p>			
-			<p><input type ="submit" value="Add"></p>
+			<table class="table-borderless">
+				<tr>
+					<td><label for="location">Where?</label></td>
+					<td><input type ="text"id="location" th:field="*{location}" /> </td>
+					<td th:if="${#fields.hasErrors('location')}"
+		                    th:errors="*{location}">Location error</td>
+	            </tr>
+	            <tr>
+					<td><label for="comment">What is it? </label></td>
+					<td><input type="text"id="comment" th:field="*{comment}" /> </td>
+					<td th:if="${#fields.hasErrors('comment')}"
+		                    th:errors="*{comment}">Comment error<td>
+	            </tr>
+	            <tr>
+					<td><label for="pvm">When? Date and time</label></td>
+					<td><input type ="text"id="pvm" th:field="*{pvm}" /></td>
+					<td th:if="${#fields.hasErrors('pvm')}"
+		                    th:errors="*{pvm}">Date error</td>	
+	             </tr>	
+	             <tr>	
+					<td><input type ="submit" class="btn btn-success" value="Add"></td>
+				</tr>
+			</table>
 			
 		</form>
 	</div>
-	<a th:href="@{/index}" class="btn btn-primary">Back</a>
+	<a th:href="@{/giglist}" class="btn btn-primary">Back</a>
 </body>
 </html>

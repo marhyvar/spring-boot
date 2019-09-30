@@ -29,7 +29,7 @@
 		</tr>
 		</tbody>
 	</table>
-	<a th:href="@{/addSong}">Add a new song to repertoire</a>
+	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/addSong}" class="btn btn-success">Add a new song to repertoire</a>
 	<a th:href="@{/index}" class="btn btn-primary">Back</a>
 		
 </body>

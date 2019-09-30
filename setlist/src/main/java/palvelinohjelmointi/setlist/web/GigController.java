@@ -1,8 +1,11 @@
 package palvelinohjelmointi.setlist.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,14 +31,17 @@ public class GigController {
 	
 	//add a gig
 	@GetMapping("addGig")
-	public String addSong(Model model) {
+	public String addGig(Model model) {
 		model.addAttribute("gig", new Gig());
 		return "addGig";
 	}
 	
 	//save a gig
 	@PostMapping("saveGig")
-	public String saveGig(Gig gig) {
+	public String saveGig(@Valid Gig gig, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "addGig";
+		}
 		gigRepo.save(gig);
 		return "redirect:giglist";
 	}

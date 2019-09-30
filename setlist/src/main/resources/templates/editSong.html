@@ -11,18 +11,29 @@
 	<div>
 		<form th:object="${song}" th:action="@{../saveSong}" action="#" method="post">
 			<input type="hidden" id="id" th:field="*{id}"/>
-			<p><label for="name">Name of the song</label>
-			<input type ="text"id="name" th:field="*{name}" /> </p>
-			<p><label for="key"> Song Key </label>
-			<input type="text"id="key" th:field="*{key}" /> </p>
-			<p><label for="originalPerformer">Original Performer</label>
-			<input type ="text"id="originalPerformer" th:field="*{originalPerformer}" /></p>
-			<p><label for="totalLength">Length of the song (mm:ss)</label>
-			 <input type ="text"id="totalLength" th:field="*{totalLength}" /></p>			
-			<p><input type ="submit" value="Update"></p>
-			
+			<table>
+				<tr>
+					<td><label for="name">Name of the song</label></td>
+					<td><input type ="text"id="name" th:field="*{name}" /> </td>
+				</tr>
+				<tr>
+					<td><label for="key"> Song Key </label></td>
+					<td><input type="text"id="key" th:field="*{key}" /> </td>
+				</tr>
+				<tr>
+					<td><label for="originalPerformer"> Original Performer </label></td>
+					<td><input type="text"id="originalPerformer" th:field="*{originalPerformer}" /> </td>
+				</tr>
+				<tr>
+					<td><label for="totalLength">Length of the song (mm:ss)</label></td>
+					<td><input type ="text"id="totalLength" th:field="*{totalLength}" /></td>	
+				 <tr>
+				 <tr>		
+					<td><input type ="submit" class="btn btn-success" value="Add"></td>
+				</tr>
+			</table>		
 		</form>
 	</div>
-	<a th:href="@{/index}" class="btn btn-primary">Back</a>
+	<a th:href="@{/songlist}" class="btn btn-primary">Back</a>
 </body>
 </html>

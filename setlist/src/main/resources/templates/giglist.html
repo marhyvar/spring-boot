@@ -27,7 +27,7 @@
 		</tr>
 		</tbody>
 	</table>
-	<a th:href="@{/addGig}">Add a new gig</a>
+	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/addGig}" class="btn btn-success">Add a new gig</a>
 	<a th:href="@{/index}" class="btn btn-primary">Back</a>
 		
 </body>
