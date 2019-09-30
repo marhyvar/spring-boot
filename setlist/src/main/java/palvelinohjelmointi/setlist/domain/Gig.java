@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,12 +24,14 @@ public class Gig {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
+	@NotEmpty(message="Location is mandatory")
+	@Size(min=2, max=40)
 	private String location;
 	
+	@Size(min=2, max=40)
 	private String comment;
 	
-	@NotNull
+	@NotNull(message="Date and time is mandatory: dd.mm.yyyy mm.ss")
 	private LocalDateTime pvm;
 	
 	@OneToOne(fetch = FetchType.LAZY,

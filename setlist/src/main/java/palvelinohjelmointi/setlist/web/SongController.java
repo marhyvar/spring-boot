@@ -1,9 +1,13 @@
 package palvelinohjelmointi.setlist.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +33,10 @@ public class SongController {
 		model.addAttribute("songs", songRepo.findAll());
 		return "songlist";
 	}
+	@ModelAttribute
+	private Song getSong() {
+		return new Song();
+	}
 	
 	//add a song
 	@GetMapping("addSong")
@@ -39,7 +47,10 @@ public class SongController {
 	
 	//save a song
 	@PostMapping("saveSong")
-	public String saveSong(Song song) {
+	public String saveSong(@Valid @ModelAttribute Song song, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "addSong";
+		}
 		songRepo.save(song);
 		return "redirect:songlist";
 	}

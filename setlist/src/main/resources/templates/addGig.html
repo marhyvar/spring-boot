@@ -13,19 +13,19 @@
 			<table class="table-borderless">
 				<tr>
 					<td><label for="location">Where?</label></td>
-					<td><input type ="text"id="location" th:field="*{location}" /> </td>
+					<td><input type ="text" id="location" th:field="*{location}" /> </td>
 					<td th:if="${#fields.hasErrors('location')}"
 		                    th:errors="*{location}">Location error</td>
 	            </tr>
 	            <tr>
 					<td><label for="comment">What is it? </label></td>
-					<td><input type="text"id="comment" th:field="*{comment}" /> </td>
+					<td><input type="text" id="comment" th:field="*{comment}" /> </td>
 					<td th:if="${#fields.hasErrors('comment')}"
 		                    th:errors="*{comment}">Comment error<td>
 	            </tr>
 	            <tr>
 					<td><label for="pvm">When? Date and time</label></td>
-					<td><input type ="text"id="pvm" th:field="*{pvm}" /></td>
+					<td><input type ="datetime" id="pvm" th:field="*{pvm}" /></td>
 					<td th:if="${#fields.hasErrors('pvm')}"
 		                    th:errors="*{pvm}">Date error</td>	
 	             </tr>	

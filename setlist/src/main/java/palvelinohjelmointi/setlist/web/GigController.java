@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,10 @@ public class GigController {
 		model.addAttribute("gigs", gigRepo.findAll());
 		return "giglist";
 	}
+	@ModelAttribute
+	private Gig getGig() {
+		return new Gig();
+	}
 	
 	//add a gig
 	@GetMapping("addGig")
@@ -38,8 +43,9 @@ public class GigController {
 	
 	//save a gig
 	@PostMapping("saveGig")
-	public String saveGig(@Valid Gig gig, BindingResult bindingResult) {
+	public String saveGig(@Valid @ModelAttribute Gig gig, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
+			
 			return "addGig";
 		}
 		gigRepo.save(gig);

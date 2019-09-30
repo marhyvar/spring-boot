@@ -24,8 +24,8 @@
 			<td th:text="${song.key}"></td>
 			<td th:text="${song.originalPerformer}"></td>
 			<td th:text="${song.totalLength}"></td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteSong/{id}(id=${song.id})}">Delete</a></td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editSong/{id}(id=${song.id})}">Edit</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteSong/{id}(id=${song.id})}" class="btn btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editSong/{id}(id=${song.id})}" class="btn btn-success">Edit</a></td>
 		</tr>
 		</tbody>
 	</table>

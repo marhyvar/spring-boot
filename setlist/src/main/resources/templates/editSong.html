@@ -15,19 +15,27 @@
 				<tr>
 					<td><label for="name">Name of the song</label></td>
 					<td><input type ="text"id="name" th:field="*{name}" /> </td>
+					<td th:if="${#fields.hasErrors('name')}"
+		                    th:errors="*{name}">Name error</td>
 				</tr>
 				<tr>
 					<td><label for="key"> Song Key </label></td>
 					<td><input type="text"id="key" th:field="*{key}" /> </td>
+					<td th:if="${#fields.hasErrors('key')}"
+		                    th:errors="*{key}">Song key error</td>
 				</tr>
 				<tr>
 					<td><label for="originalPerformer"> Original Performer </label></td>
 					<td><input type="text"id="originalPerformer" th:field="*{originalPerformer}" /> </td>
+					<td th:if="${#fields.hasErrors('originalPerformer')}"
+		                    th:errors="*{originalPerformer}">Original performer error</td>
 				</tr>
 				<tr>
 					<td><label for="totalLength">Length of the song (mm:ss)</label></td>
-					<td><input type ="text"id="totalLength" th:field="*{totalLength}" /></td>	
-				 <tr>
+					<td><input type ="text"id="totalLength" th:field="*{totalLength}" /></td>
+					<td th:if="${#fields.hasErrors('totalLength')}"
+		                    th:errors="*{totalLength}">Total length error</td>	
+				 </tr>
 				 <tr>		
 					<td><input type ="submit" class="btn btn-success" value="Add"></td>
 				</tr>
