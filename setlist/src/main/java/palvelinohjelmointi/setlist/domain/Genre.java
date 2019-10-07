@@ -7,32 +7,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
-@Data
-public class Set {
+@Getter
+@Setter
+public class Genre {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	private String name;
 	
-	@OneToOne
-	@JoinColumn(name="id")
-	private Gig gig;
-	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="set")
-	private List<Song> setList;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="genre")
+	private List<Song> songs;
 
-	public Set(Gig gig) {
+	public Genre(String name) {
 		super();
-		this.gig = gig;
-
+		this.name = name;
 	}
 	
 }

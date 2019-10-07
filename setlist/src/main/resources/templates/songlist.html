@@ -15,15 +15,17 @@
 				<th>Song Key</th>
 				<th>Original Performer</th>
 				<th>Total Length</th>
+				<th>Genre </th>
 				<th sec:authorize="hasAuthority('ADMIN')"> </th>
 				<th sec:authorize="hasAuthority('ADMIN')"> </th>
 			</tr>
 		</thead>
 		<tr th:each="song : ${songs}">
 			<td th:text="${song.name}"></td>
-			<td th:text="${song.key}"></td>
+			<td th:text="${song.songkey}"></td>
 			<td th:text="${song.originalPerformer}"></td>
 			<td th:text="${song.totalLength}"></td>
+			<td th:text="${song.genre.name}"></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteSong/{id}(id=${song.id})}" class="btn btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editSong/{id}(id=${song.id})}" class="btn btn-success">Edit</a></td>
 		</tr>

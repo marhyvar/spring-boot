@@ -34,10 +34,8 @@ public class Gig {
 	@NotNull(message="Date and time is mandatory: dd.mm.yyyy mm.ss")
 	private LocalDateTime pvm;
 	
-	@OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "gig")
-	private Set set;
+
+
 	
 	public Gig(String location, String comment, LocalDateTime pvm) {
 		super();
@@ -46,12 +44,5 @@ public class Gig {
 		this.pvm = pvm;
 	}
 
-	public Gig(String location, String comment, LocalDateTime pvm, Set set) {
-		super();
-		this.location = location;
-		this.comment = comment;
-		this.pvm = pvm;
-		this.set = set;
-	}
 	
 }

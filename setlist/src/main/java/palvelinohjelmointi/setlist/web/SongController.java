@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import palvelinohjelmointi.setlist.domain.GenreRepository;
 import palvelinohjelmointi.setlist.domain.Song;
 import palvelinohjelmointi.setlist.domain.SongRepository;
 
@@ -22,6 +23,9 @@ public class SongController {
 
 	@Autowired
 	public SongRepository songRepo;
+	
+	@Autowired
+	public GenreRepository genreRepo;
 	
 	@GetMapping("index")
 	public String index() {
@@ -43,6 +47,7 @@ public class SongController {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("addSong")
 	public String addSong(Model model) {
+		model.addAttribute("genres", genreRepo.findAll());
 		model.addAttribute("song", new Song());
 		return "addSong";
 	}
@@ -63,8 +68,9 @@ public class SongController {
     @GetMapping(value = "/editSong/{id}")
     public String updateSong(@PathVariable("id") Long id, Model model) {
     	Song song = songRepo.findById(id).get();
-    	System.out.println("update song " + song.toString());
+    	
     	model.addAttribute("song", song);
+    	model.addAttribute("genres", genreRepo.findAll());
     	return "editSong";
 }
 

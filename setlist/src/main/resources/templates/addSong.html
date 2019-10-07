@@ -18,10 +18,10 @@
 		                    th:errors="*{name}">Name error</td>
 				</tr>
 				<tr>
-					<td><label for="key"> Song Key </label></td>
-					<td><input type="text"id="key" th:field="*{key}" /> </td>
-					<td th:if="${#fields.hasErrors('key')}"
-		                    th:errors="*{key}">Song key error</td>
+					<td><label for="songkey"> Song Key </label></td>
+					<td><input type="text"id="songkey" th:field="*{songkey}" /> </td>
+					<td th:if="${#fields.hasErrors('songkey')}"
+		                    th:errors="*{songkey}">Song key error</td>
 				</tr>
 				<tr>
 					<td><label for="originalPerformer"> Original Performer </label></td>
@@ -35,6 +35,13 @@
 					<td th:if="${#fields.hasErrors('totalLength')}"
 		                    th:errors="*{totalLength}">Total length error</td>	
 				 </tr>
+				<tr>
+					<td><label for="genres">Genre</label></td>
+					<td><select id="genres" th:field="*{genre}">
+       				<option th:each="genre: ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+    				</select></td>
+    				<td></td>		
+				</tr> 
 				 <tr>		
 					<td><input type ="submit" class="btn btn-success" value="Add"></td>
 				</tr>

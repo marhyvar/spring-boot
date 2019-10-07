@@ -12,12 +12,14 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Song {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,7 +28,7 @@ public class Song {
 	private String name;
 	
 	@Size(min=1, max=5)
-	private String key;
+	private String songkey;
 	
 	@Size(min=2, max=30)
 	private String originalPerformer;
@@ -36,16 +38,24 @@ public class Song {
 	
 	@ManyToOne
 	@JsonIgnore
-    @JoinColumn(name="setid")
-	private Set set;
+    @JoinColumn(name="genreid")
+	private Genre genre;
 	
-	
-	public Song(String name, String key, String originalPerformer, String totalLength) {
+	public Song(String name, String songkey, String originalPerformer, String totalLength) {
 		super();
 		this.name = name;
-		this.key = key;
+		this.songkey = songkey;
 		this.originalPerformer = originalPerformer;
 		this.totalLength = totalLength;
+	}
+	
+	public Song(String name, String songkey, String originalPerformer, String totalLength, Genre genre) {
+		super();
+		this.name = name;
+		this.songkey = songkey;
+		this.originalPerformer = originalPerformer;
+		this.totalLength = totalLength;
+		this.genre = genre;
 	}
 		
 }
