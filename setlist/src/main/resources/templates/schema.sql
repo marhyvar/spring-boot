@@ -21,10 +21,10 @@ total_length VARCHAR(255) NOT NULL,
 genreid BIGINT NOT NULL);
 
 CREATE TABLE user
-(id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-password VARCHAR(255) NOT NULL,
-role VARCHAR(255) NOT NULL,
-username VARCHAR(255) NOT NULL);
+(id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY
+,username VARCHAR(250) NOT NULL
+,password VARCHAR(250) NOT NULL
+,role VARCHAR(20) NOT NULL);
 
 INSERT INTO genre (name) VALUES ('Rock'), ('Pop'), ('Heavy');
 
@@ -36,6 +36,6 @@ INSERT INTO gig (comment, location, pvm)
 VALUES ('Birthday party', 'Helsinki', '2019-11-21 18:15:00.000'),
 ('Wedding', 'Turku', '2019-11-29 12:00:00.000');
 
-INSERT INTO user (password, role, username)
-VALUES ('$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6', 'USER', 'user'),
-('$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C', 'ADMIN', 'admin');
+INSERT INTO user (username, password, role) 
+VALUES ("user", "$2a$10$1DTvwpXVBArGFixHBuzVJObjTuXhIOkx5pse6KsYs8/C2ckxnGEou", "USER"), 
+("admin", "$2a$10$cDZgyF4xaPMmmoRW3OVcmuf.8o2YSx8.M7CeRKqi.1PVw.t3E8uEC", "ADMIN");
