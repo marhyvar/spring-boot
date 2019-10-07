@@ -1,5 +1,7 @@
 package palvelinohjelmointi.setlist.web;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import palvelinohjelmointi.setlist.domain.GenreRepository;
 import palvelinohjelmointi.setlist.domain.Song;
@@ -82,4 +85,10 @@ public class SongController {
     	songRepo.deleteById(id);
     	return "redirect:../songlist";
     }
+	
+	// RESTful get the song according to id
+	@GetMapping(value="/song/{id}")
+	public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") long songId) {
+		return songRepo.findById(songId);
+	}
 }
