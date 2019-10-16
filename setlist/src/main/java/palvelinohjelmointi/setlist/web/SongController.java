@@ -41,6 +41,8 @@ public class SongController {
 		model.addAttribute("songs", songRepo.findAll());
 		return "songlist";
 	}
+	
+	//for saving the song with error checking
 	@ModelAttribute
 	private Song getSong() {
 		return new Song();

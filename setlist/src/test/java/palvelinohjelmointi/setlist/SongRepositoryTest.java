@@ -35,4 +35,10 @@ public class SongRepositoryTest {
 		songRepo.save(song);
 		assertThat(song.getId()).isNotNull();
 	}
+	
+	@Test
+	public void deleteSongs() {
+		songRepo.deleteAll();
+		assertThat(songRepo.findAll()).isEmpty();
+	}
 }
