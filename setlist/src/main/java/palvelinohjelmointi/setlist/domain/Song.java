@@ -33,7 +33,7 @@ public class Song {
 	@Size(min=2, max=30)
 	private String originalPerformer;
 	
-	@Pattern(regexp = "(^[0-5]?[0-9]):([0-5]?[0-9])$")
+	@Pattern(regexp = "(^[0-5]?[0-9]):([0-5]?[0-9])$", message="Use mm:ss")
 	private String totalLength;
 	
 	@ManyToOne

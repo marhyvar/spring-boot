@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import palvelinohjelmointi.setlist.domain.Genre;
 import palvelinohjelmointi.setlist.domain.GenreRepository;
 import palvelinohjelmointi.setlist.domain.Song;
 import palvelinohjelmointi.setlist.domain.SongRepository;
@@ -48,6 +49,11 @@ public class SongController {
 		return new Song();
 	}
 	
+	@ModelAttribute
+	private Genre getGenre() {
+		return new Genre();
+	}
+	
 	//add a song
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("addSong")
@@ -57,10 +63,11 @@ public class SongController {
 		return "addSong";
 	}
 	
+	
 	//save a song
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("saveSong")
-	public String saveSong(@Valid @ModelAttribute Song song, BindingResult bindingResult) {
+	public String saveSong(@Valid @ModelAttribute Song song, BindingResult bindingResult, @ModelAttribute Genre genre) {
 		if (bindingResult.hasErrors()) {
 			return "addSong";
 		}

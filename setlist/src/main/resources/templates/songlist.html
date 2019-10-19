@@ -25,7 +25,7 @@
 			<td th:text="${song.songkey}"></td>
 			<td th:text="${song.originalPerformer}"></td>
 			<td th:text="${song.totalLength}"></td>
-			<td th:text="${song.genre.name}"></td>
+			<td th:text="${song.genre.name !=null} ? ${song.genre.name} ">Not defined</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteSong/{id}(id=${song.id})}" class="btn btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editSong/{id}(id=${song.id})}" class="btn btn-success">Edit</a></td>
 		</tr>
