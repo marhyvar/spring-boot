@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 
 import palvelinohjelmointi.setlist.domain.Genre;
 import palvelinohjelmointi.setlist.domain.GenreRepository;
@@ -25,11 +26,16 @@ public class SetlistApplication {
 	}
 	
 	@Bean
+    public Java8TimeDialect java8TimeDialect() {
+        return new Java8TimeDialect();
+    }
+	
+	@Bean
 	public CommandLineRunner demo(SongRepository songRepo, GigRepository gigRepo, UserRepository userRepo, GenreRepository genreRepo) { 
 		return (args) -> { 
 			
-			LocalDateTime dateTime1 = LocalDateTime.of(2019, Month.SEPTEMBER, 11, 16, 15, 15);
-			LocalDateTime dateTime2 = LocalDateTime.of(2019, Month.OCTOBER, 19, 16, 15, 15);
+			LocalDateTime dateTime1 = LocalDateTime.of(2019, Month.NOVEMBER, 11, 16, 15, 00);
+			LocalDateTime dateTime2 = LocalDateTime.of(2019, Month.DECEMBER, 19, 16, 15, 00);
 			genreRepo.save(new Genre("Rock"));
 			genreRepo.save(new Genre("Pop"));
 			genreRepo.save(new Genre("Heavy"));

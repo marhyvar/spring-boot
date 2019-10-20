@@ -2,13 +2,10 @@ package palvelinohjelmointi.setlist.domain;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,11 +28,8 @@ public class Gig {
 	@Size(min=2, max=40)
 	private String comment;
 	
-	@NotNull(message="Date and time is mandatory: dd.mm.yyyy mm.ss")
+	@NotNull(message="Date and time is mandatory: dd.MM.yyyy HH.mm")
 	private LocalDateTime pvm;
-	
-
-
 	
 	public Gig(String location, String comment, LocalDateTime pvm) {
 		super();
@@ -43,6 +37,5 @@ public class Gig {
 		this.comment = comment;
 		this.pvm = pvm;
 	}
-
 	
 }

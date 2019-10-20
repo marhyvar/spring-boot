@@ -25,7 +25,8 @@
 		<tr th:each="gig : ${gigs}">
 			<td th:text="${gig.location}"></td>
 			<td th:text="${gig.comment}"></td>
-			<td th:text="${gig.pvm}"></td>
+			<!-- <td th:text="${gig.pvm}"></td>  -->
+			<td th:text="${#temporals.format(gig.pvm, 'dd.MM.yyyy HH:mm')}"></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteGig/{id}(id=${gig.id})}" class="btn btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editGig/{id}(id=${gig.id})}" class="btn btn-success">Edit</a></td>
 		</tr>
