@@ -48,12 +48,7 @@ public class SongController {
 	private Song getSong() {
 		return new Song();
 	}
-	
-	@ModelAttribute
-	private Genre getGenre() {
-		return new Genre();
-	}
-	
+		
 	//add a song
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("addSong")
@@ -67,8 +62,9 @@ public class SongController {
 	//save a song
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("saveSong")
-	public String saveSong(@Valid @ModelAttribute Song song, BindingResult bindingResult, @ModelAttribute Genre genre) {
+	public String saveSong(@Valid @ModelAttribute Song song, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("genres", genreRepo.findAll());
 			return "addSong";
 		}
 		songRepo.save(song);

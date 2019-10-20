@@ -6,12 +6,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Keep your band repertoire and gigs in order!</h1>
-	<h3>Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>Keep your band repertoire and gigs in order!</h1>
+			<h3>Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+	  <ul class="navbar-nav">
+	    <li class="nav-item">
+	      <a class="nav-link" style="font-size: 25px;" th:href="@{/songlist}">Show repertoire</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" style="font-size: 25px;" th:href="@{/giglist}">Show gigs</a>
+	    </li>
+	  </ul>
+	</nav>
 	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		<input type="submit" value="Sign out" class="btn btn-sm btn-danger" style="margin-top: 20px; font-size: 20px;"/>
 	</form>
-	<a th:href="@{/songlist}" class="btn btn-primary">Show repertoire</a>
-	<a th:href="@{/giglist}" class="btn btn-primary">Show gigs</a>
+
 </body>
 </html>
