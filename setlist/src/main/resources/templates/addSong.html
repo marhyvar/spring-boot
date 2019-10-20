@@ -6,9 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Repertoire</h1>
-	<p>Here you can add a new song into band's repertoire</p>
-	<div>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>Repertoire</h1>
+			<p>Here you can add a new song into band's repertoire</p>
+		</div>
+	</div>
+	
+	<div style="padding: 10px;">
 		<form th:object="${song}" th:action="@{saveSong}" action="#" method="post">
 			<table>
 				<tr>
@@ -48,6 +53,9 @@
 			</table>	
 		</form>
 	</div>
-	<a th:href="@{/songlist}" class="btn btn-primary">Back</a>
+	
+	<div style="padding: 10px;">
+		<a th:href="@{/songlist}" class="btn btn-primary">Back</a>
+	</div>
 </body>
 </html>

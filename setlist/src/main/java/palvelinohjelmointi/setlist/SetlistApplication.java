@@ -39,9 +39,11 @@ public class SetlistApplication {
 			genreRepo.save(new Genre("Rock"));
 			genreRepo.save(new Genre("Pop"));
 			genreRepo.save(new Genre("Heavy"));
-			Song song1 = new Song("Every Breath You Take", "G", "The Police", "4:32", genreRepo.findByName("Rock").get(0));
-			Song song2 = new Song("Take On Me", "G", "A-HA", "4:03", genreRepo.findByName("Pop").get(0));
-			Song song3 = new Song("Holy Diver", "Em", "Dio", "5:12", genreRepo.findByName("Heavy").get(0));
+			genreRepo.save(new Genre("Jazz"));
+			genreRepo.save(new Genre("Folk"));
+			Song song1 = new Song("Every Breath You Take", "G", "The Police", "4:13", genreRepo.findByName("Rock").get(0));
+			Song song2 = new Song("Take On Me", "G", "A-ha", "3:46", genreRepo.findByName("Pop").get(0));
+			Song song3 = new Song("Holy Diver", "Em", "Dio", "5:51", genreRepo.findByName("Heavy").get(0));
 			Gig gig1 = new Gig("Helsinki", "Esko's Birthday Party", dateTime1);
 			Gig gig2 = new Gig("Turku", "Selma's and Pete's Wedding", dateTime2);
 			

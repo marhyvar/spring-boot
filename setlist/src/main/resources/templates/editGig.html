@@ -6,26 +6,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Edit a gig's information</h1>
-	<p>Change the gig's information.</p>
-	<div>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>Edit a gig's information</h1>
+			<p>Change the gig's information.</p>
+		</div>
+	</div>
+	
+	<div style="padding: 10px;">
 		<form th:object="${gig}" th:action="@{../saveGig}" action="#" method="post">
 			<input type="hidden" id="id" th:field="*{id}"/>
 			<table class="table-borderless">
 				<tr>
-					<td><label for="location">Where?</label></td>
+					<td><label for="location">Where? (location)</label></td>
 					<td><input type ="text"id="location" th:field="*{location}" /> </td>
 					<td th:if="${#fields.hasErrors('location')}"
 		                    th:errors="*{location}">Location error</td>
 	            </tr>
 	            <tr>
-					<td><label for="comment">What is it? </label></td>
+					<td><label for="comment">Type of the event? (wedding, birthday etc.) </label></td>
 					<td><input type="text"id="comment" th:field="*{comment}" /> </td>
 					<td th:if="${#fields.hasErrors('comment')}"
 		                    th:errors="*{comment}">Comment error<td>
 	            </tr>
 	            <tr>
-					<td><label for="pvm">When? Date and time</label></td>
+					<td><label for="pvm">When? Date and time (e.g. 01.12.2019 12.00)</label></td>
 					<td><input type ="text"id="pvm" th:field="*{pvm}" /></td>
 					<td th:if="${#fields.hasErrors('pvm')}"
 		                    th:errors="*{pvm}">Date error</td>	
@@ -37,6 +42,9 @@
 			
 		</form>
 	</div>
-	<a th:href="@{/giglist}" class="btn btn-primary">Back</a>
+	
+	<div style="padding: 10px;">
+		<a th:href="@{/giglist}" class="btn btn-primary">Back</a>
+	</div>
 </body>
 </html>
