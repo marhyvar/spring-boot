@@ -29,7 +29,7 @@ public class SetlistApplication {
     public Java8TimeDialect java8TimeDialect() {
         return new Java8TimeDialect();
     }
-	
+	/*
 	@Bean
 	public CommandLineRunner demo(SongRepository songRepo, GigRepository gigRepo, UserRepository userRepo, GenreRepository genreRepo) { 
 		return (args) -> { 
@@ -64,5 +64,5 @@ public class SetlistApplication {
 			userRepo.save(user1);
 			userRepo.save(user2); 
 		}; 
-	}
+	} */
 }
