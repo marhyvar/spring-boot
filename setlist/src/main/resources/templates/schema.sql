@@ -26,7 +26,7 @@ CREATE TABLE user
 ,password VARCHAR(250) NOT NULL
 ,role VARCHAR(20) NOT NULL);
 
-INSERT INTO genre (name) VALUES ('Rock'), ('Pop'), ('Heavy');
+INSERT INTO genre (name) VALUES ('Rock'), ('Pop'), ('Heavy'), ('Jazz'), ('Folk');
 
 INSERT INTO song (songkey, name, original_performer, total_length, genreid) 
 VALUES ('Am', 'Screaming for Vengeance', 'Judas Priest', '5:34', 3), 
